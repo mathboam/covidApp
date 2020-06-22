@@ -1,0 +1,96 @@
+import React from 'react';
+import { View, Text, StyleSheet, Modal, ScrollView } from 'react-native';
+import Constants from 'expo-constants';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Ionicons } from '@expo/vector-icons';
+import { height } from '../../../constants/constants';
+import font_sizes from '../../../constants/font_sizes';
+import colors from '../../../constants/colors';
+
+export default function AssessmentModal({ close, visible }) {
+  return (
+    <Modal
+      visible={visible}
+      presentationStyle={'pageSheet'}
+      animationType={'slide'}>
+      <ScrollView style={styles.container}>
+        <ScrollView
+          style={{
+            borderBottomWidth: StyleSheet.hairlineWidth,
+            borderColor: colors.borderColor,
+            paddingBottom: 20,
+          }}>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>Self Assessment</Text>
+            <TouchableOpacity onPress={() => close(1)}>
+              <Ionicons name="ios-close" size={40} />
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+        <View style={{ marginVertical: 20 }}>
+          <Text style={styles.mainTitle}>Getting Started!</Text>
+          <Text style={styles.mainText}>
+            {
+              "This tool is intended to help you understand what to do next about COVID-19. You'll answer a few questions about your symptoms, travel and contact you've had with others"
+            }
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.mainTitle}>Note</Text>
+          <Text style={styles.mainText}>
+            {
+              'Recommendations provided by this tool do not constitute medidal advice and should not be used to diagnose or treat medical conditions'
+            }
+          </Text>
+          <View style={{ marginVertical: 20 }}>
+            <Text style={styles.mainText}>
+              {
+                "Let's all look out of for each other by knowing our status, trying not to infect others, and reserving care for those in need"
+              }
+            </Text>
+          </View>
+        </View>
+        <View style={{ marginTop: height * 0.27 }}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={([styles.mainTitle], { color: colors.white })}>
+              Start Assessment...
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </Modal>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: Constants.statusBarHeight,
+    paddingHorizontal: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 20,
+  },
+  headerTitle: {
+    fontFamily: 'AirbnbCereal-Bold',
+    letterSpacing: -0.2,
+    fontSize: font_sizes.h1,
+  },
+  mainTitle: {
+    fontFamily: 'AirbnbCereal-Bold',
+    letterSpacing: -0.5,
+    fontSize: font_sizes.t3,
+  },
+  mainText: {
+    fontFamily: 'AirbnbCereal-Medium',
+    letterSpacing: -0.1,
+  },
+  button: {
+    height: 53,
+    backgroundColor: colors.button,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

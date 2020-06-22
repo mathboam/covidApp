@@ -1,5 +1,10 @@
-# covidApp
 
-ID:10661674
-expo username :math123
-password: BoAMPONGBiG11
+# CSCD 322
+
+# Identity
+`ID: 10661674`
+
+# Access to my Expo Account
+`email: math123`
+`password: BoAMPONGBiG11`
+
